@@ -192,14 +192,23 @@ export default function Home() {
                   padding: 20,
                 }}
               >
-                Seth Dennis is a professional trader with over 10 years of
-                experience in the financial markets. He specializes in forex and
-                commodities trading and has a passion for teaching others how to
-                trade successfully. He has built a community of traders who
-                learn from his strategies and insights. Seth's approach to
-                trading is based on technical analysis, risk management, and
-                discipline. He believes that anyone can learn to trade with the
-                right guidance and mindset.
+                ​Seth Dennis is a professional forex trader and technical
+                analyst specializing in institutional price delivery models,
+                including Smart Money Concepts (SMC), market structure shifts,
+                and liquidity dynamics. ​Beginning his trading journey in 2023,
+                Seth adopted a rigorous, highly technical approach to the
+                financial markets rather than relying on lagging retail
+                indicators. By focusing on market structure, order blocks, fair
+                value gaps (FVG), liquidity sweeps, and change of character
+                (CHoCH) models, he treats trading as a discipline of precision,
+                risk management, and probability. ​With a strong foundation in
+                analytical problem-solving and technical execution, Seth
+                specializes in trading volatile instruments like XAUUSD (Gold)
+                and BTCUSD, navigating lower-timeframe price action setups with
+                structured frameworks. Beyond his technical analysis, he is
+                dedicated to breaking down complex institutional concepts into
+                clear, actionable frameworks for traders looking to master
+                modern price action.
                 <a
                   href="https://t.me/tradewithsethdennis"
                   target="_blank"
