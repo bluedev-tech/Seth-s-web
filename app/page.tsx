@@ -1,69 +1,294 @@
+"use client";
+import { ListIcon, XIcon } from "@phosphor-icons/react";
+import { useEffect, useState } from "react";
+import {
+  EnvelopeIcon,
+  TiktokLogoIcon,
+  WhatsappLogoIcon,
+  InstagramLogoIcon,
+} from "@phosphor-icons/react";
 import Image from "next/image";
-
+import bgImage from "../public/bgImage.jpg";
+import founderImage from "../public/Seth.jpeg";
+import one from "../public/Trades/one.jpeg";
+import two from "../public/Trades/two.jpeg";
+import three from "../public/Trades/three.jpeg";
+import four from "../public/Trades/four.jpeg";
+import five from "../public/Trades/five.jpeg";
+import six from "../public/Trades/six.jpeg";
+import seven from "../public/Trades/seven.jpeg";
+import "@/app/home.css";
 export default function Home() {
+  const trades = [
+    {
+      id: 1,
+      image: one,
+      description: "USD/JPY trade with a 50 pip profit",
+    },
+    {
+      id: 2,
+      image: two,
+      description: "EUR/USD trade with a 30 pip profit",
+    },
+    {
+      id: 3,
+      image: three,
+      description: "GBP/USD trade with a 40 pip profit",
+    },
+    {
+      id: 4,
+      image: four,
+      description: "AUD/USD trade with a 25 pip profit",
+    },
+    {
+      id: 5,
+      image: five,
+      description: "USD/CAD trade with a 35 pip profit",
+    },
+    {
+      id: 6,
+      image: six,
+      description: "NZD/USD trade with a 20 pip profit",
+    },
+    {
+      id: 7,
+      image: seven,
+      description: "USD/CHF trade with a 45 pip profit",
+    },
+  ];
+
+  const [isScrolling, setIsScrolling] = useState(false);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  useEffect(() => {
+    let scrollEndTimer: ReturnType<typeof setTimeout> | undefined;
+
+    const handleScroll = () => {
+      setIsScrolling(true);
+      if (scrollEndTimer) clearTimeout(scrollEndTimer);
+      scrollEndTimer = setTimeout(() => setIsScrolling(false), 250);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => {
+      if (scrollEndTimer) clearTimeout(scrollEndTimer);
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div
+      className="inset-0 z-10"
+      style={{ position: "relative", width: "100%" }}
+    >
+      <Image
+        src={bgImage}
+        alt="Background"
+        sizes="100vw"
+        fill
+        priority
+        style={{ zIndex: -1, position: "absolute", top: 0, left: 0 }}
+        className="object-cover object-center"
+      />
+      <div
+        className="navbar flex h-15 items-center px-10"
+        style={{
+          transform: isScrolling ? "translateY(-100%)" : "translateY(0)",
+          opacity: isScrolling ? 0 : 1,
+          pointerEvents: "auto",
+          transition: "transform 300ms ease, opacity 300ms ease",
+        }}
+      >
+        <div className="left flex-1">
+          <div className="logo">SETH'S FX</div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+        <nav
+          className="right max-md:flex md:hidden cursor-pointer"
+          aria-label="Main navigation"
+        >
+          {isOpen ? (
+            <button type="button">
+              <XIcon size={24} onClick={() => setIsOpen(false)} />
+            </button>
+          ) : (
+            <button type="button" className="p-2">
+              <ListIcon size={24} onClick={() => setIsOpen(true)} />
+            </button>
+          )}
+        </nav>
+        <nav className="right max-md:hidden" aria-label="Main navigation">
+          <div className="flex" style={{ gap: 10 }}>
+            <a href="#overview" className="ln">
+              Overview
+            </a>
+            <a href="#trades" className="ln">
+              Trades
+            </a>
+            <a href="#contact" className="ln">
+              Contact Us
+            </a>
+          </div>
+        </nav>
+      </div>
+      {isOpen && (
+        <div className="midMenu md:hidden w-full flex flex-col gap-5 p-5 rounded-lg fixed z-1000">
+          {isOpen && (
+            <ul className="flex flex-col">
+              <li className="mln">
+                <a href="#overview">Overview</a>
+              </li>
+              <li className="mln">
+                <a href="#trades">Trades</a>
+              </li>
+              <li className="mln">
+                <a href="#contact">Contact Us</a>
+              </li>
+            </ul>
+          )}
         </div>
-      </main>
+      )}
+      <div
+        className="body"
+        style={{
+          position: "relative",
+          paddingTop: "80px",
+        }}
+      >
+        <div className="container flex flex-col">
+          <div className="header" id="overview">
+            <h1 className="platName max-md:text-xl md:text-4xl">
+              LEARN TO TRADE WITH SETH DENNIS
+            </h1>
+          </div>
+          <div
+            className="founder flex max-md:flex-col max-md:justify-center max-md:align-center"
+            style={{ marginBottom: 100 }}
+          >
+            <div
+              className="founderImage justify-center align-center"
+              style={{ flex: 1, display: "flex", justifyContent: "center" }}
+            >
+              <Image
+                priority
+                src={founderImage}
+                alt="Founder"
+                width={300}
+                height={300}
+                style={{ maxWidth: "100%", height: "auto" }}
+              />
+            </div>
+            <div
+              className="founderText"
+              style={{ flex: 1, display: "flex", justifyContent: "center" }}
+            >
+              <div
+                style={{
+                  fontSize: "1.2rem",
+                  lineHeight: "1.5",
+                  textAlign: "justify",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  padding: 20,
+                }}
+              >
+                Seth Dennis is a professional trader with over 10 years of
+                experience in the financial markets. He specializes in forex and
+                commodities trading and has a passion for teaching others how to
+                trade successfully. He has built a community of traders who
+                learn from his strategies and insights. Seth's approach to
+                trading is based on technical analysis, risk management, and
+                discipline. He believes that anyone can learn to trade with the
+                right guidance and mindset.
+                <a
+                  href="https://t.me/tradewithsethdennis"
+                  target="_blank"
+                  title="Join Seth's Telegram Community"
+                  rel="noopener noreferrer"
+                  className="ln"
+                >
+                  <button
+                    className="tele bg-blue-400 h-15 flex items-center justify-center"
+                    style={{
+                      cursor: "pointer",
+                      borderRadius: "25px",
+                      padding: 20,
+                      marginTop: 20,
+                    }}
+                  >
+                    JOIN OUR TELEGRAM COMMUNITY
+                  </button>
+                </a>
+              </div>
+            </div>
+          </div>
+          <h3 className="text-center max-md:text-xl md:text-4xl" id="trades">
+            CHECK OUT SOME OF OUR TRADES
+          </h3>
+          <div className="trades flex flex-wrap gap-5 w-auto h-auto px-5 py-5 items-center justify-center">
+            {trades.map((item) => (
+              <div key={item.id} className=" pack bg-mist-900 w-100 px-5 py-3">
+                <div className="w-90 h-50 relative">
+                  <Image
+                    className="tPic"
+                    src={item.image}
+                    alt="tradeImage"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="desc">{item.description}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="contactUs py-20 flex flex-col" id="contact">
+          <h3 className="max-md:text-base md:text-4xl font-bold text-center">
+            CONTACT US VIA OUR SOCIAL MEDIA ACCOUNTS
+          </h3>
+          <div className="flex gap-10 items-center justify-center mt-10 flex-wrap">
+            <a
+              className="sLink"
+              href="mailto:sethdennis33@gmail.com?subject=Show of Interest to Learn Forex Trading&body=Hello Seth Dennis, I am interested in learning forex trading. Please provide me with more information about your courses and how I can get started."
+              target="_blank"
+              title="Contact us via Email"
+              rel="noopener noreferrer"
+            >
+              <EnvelopeIcon size={24} />
+              sethdennis33@gmail.com
+            </a>
+            <a
+              className="sLink"
+              href="https://www.tiktok.com/@bigmeech005"
+              target="_blank"
+              title="Visit our Tiktok Page"
+              rel="noopener noreferrer"
+            >
+              <TiktokLogoIcon size={24} />
+              Our Tiktok Page
+            </a>
+            <a
+              className="sLink"
+              href="https://www.instagram.com/bigmeech005"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Contact us on Instagram"
+            >
+              <InstagramLogoIcon size={24} />
+              Our Instagram Page
+            </a>
+            <a
+              className="sLink"
+              href="https://chat.whatsapp.com/DkdndToCiiVGHvPGx791LI?s=cl&p=a&iam=2"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Contact us on WhatsApp"
+            >
+              <WhatsappLogoIcon size={24} />
+              Our WhatsApp Group
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

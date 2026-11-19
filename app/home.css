@@ -1,0 +1,98 @@
+.navbar {
+  background-color: rgba(222, 222, 222, 0.292);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+.body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+}
+.container {
+  display: flex;
+  .header {
+    position: absolute;
+    margin-top: 40px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  h1 {
+    font-weight: 900;
+    width: 100%;
+    text-align: center;
+    background: linear-gradient(to right, #5d81cd, #293d8d);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+}
+.platName {
+  white-space: nowrap;
+  width: 0;
+  animation: typing 5s steps(30, end);
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+.founder {
+  margin-top: 150px;
+  flex-wrap: wrap;
+}
+.pack {
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(91, 91, 91, 0.461);
+}
+.tPic {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 150px;
+}
+.ln {
+  cursor: pointer;
+}
+.sLink {
+  display: flex;
+  gap: 10px;
+}
+.midMenu {
+  background-color: rgb(2, 2, 43);
+  border-radius: 0 0 10px 10px;
+  top: 60;
+}
+.mln {
+  cursor: pointer;
+  color: #b6c2dc;
+  padding: 10px 5px;
+  transition: 0.15s;
+  border-radius: 0 5px 5px 0;
+}
+.mln:hover {
+  color: #f4f4f6;
+  background-color: rgba(47, 47, 72, 0.856);
+}
+.mln:active {
+  color: #b6c2dc;
+}
+* {
+  outline: 1px solid red;
+}
